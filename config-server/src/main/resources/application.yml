@@ -9,7 +9,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Roc0924/config-repo
+          uri: https://github.com/Roc0924/config-repos
 
 server:
   port: 8888
