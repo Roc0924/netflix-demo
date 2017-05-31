@@ -9,6 +9,17 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://test:123456@localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    healthcheck:
+      enabled: true
   instance:
     prefer-ip-address: true
     instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+
+# 关闭安全策略
+management :
+  security :
+    enabled : false

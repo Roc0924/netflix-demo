@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String doGet() {
-        return "hello world!";
+    public String doGet(@RequestParam(name = "name") String name) {
+        return "hello " + name;
     }
 }
