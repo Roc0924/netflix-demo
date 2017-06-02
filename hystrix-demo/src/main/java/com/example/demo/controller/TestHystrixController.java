@@ -6,6 +6,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.TimeoutException;
@@ -24,7 +25,7 @@ public class TestHystrixController {
     TestHystrixService testHystrixService;
 
     @RequestMapping(value = "/testHystrix", method = RequestMethod.GET)
-    public String testHystrix() {
-        return testHystrixService.testHystrix();
+    public String testHystrix(@RequestParam(name = "name") String name) {
+        return testHystrixService.testHystrix(name);
     }
 }

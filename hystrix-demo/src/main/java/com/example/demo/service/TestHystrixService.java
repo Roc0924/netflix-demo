@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -17,18 +18,18 @@ public class TestHystrixService {
     private Random random = new Random();
 
     @HystrixCommand(fallbackMethod = "fallback")
-    public String testHystrix() {
+    public String testHystrix(String name) {
         int randomInt = random.nextInt(10);
 
         if(randomInt < 5) {
             throw new RuntimeException("call TestHystrixService fail.");
         } else {
-            return "randomInt : " + randomInt;
+            return "randomInt : " + randomInt + "name : " + name;
         }
     }
 
-    public String fallback() {
-        return "return from fallback";
+    public String fallback(String test) {
+        return "return from fallback, test:" + test;
     }
 
 }
